@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 
 // Navigation Constants
-const val OPEN_DASHBOARD = ".module.dashboard"
+const val DASHBOARD_SCREEN = ".module.dashboard"
 
 object NavigateUtils {
 

@@ -2,6 +2,7 @@ package mypayapp.ui.base
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import mypayapp.ui.utils.NavigateUtils
 
 open class BaseActivity : AppCompatActivity() {
     fun replaceFragment(
@@ -17,5 +18,12 @@ open class BaseActivity : AppCompatActivity() {
             fragmentTransaction.addToBackStack(tag)
         }
         fragmentTransaction.commit()
+    }
+
+    fun open(screenName: String, finishCurrentScreen: Boolean = false) {
+        startActivity(NavigateUtils.navigateTo(applicationContext, screenName))
+        if (finishCurrentScreen) {
+            finish()
+        }
     }
 }

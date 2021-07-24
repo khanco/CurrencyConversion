@@ -36,14 +36,14 @@ android {
         textOutput 'stdout'
         disable 'InvalidPackage', 'GradleCompatible'
     }
-    dataBinding {
-        enabled = true
+
+    buildFeatures {
+        dataBinding true
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    testImplementation 'junit:junit:4.13.2'
 
     // Koin dependency injection
     implementation rootProject.koin
