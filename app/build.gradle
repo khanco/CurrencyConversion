@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -46,6 +47,10 @@ android {
         exclude 'META-INF/LGPL2.1'
         exclude 'META-INF/licenses/ASM'
     }
+
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -64,4 +69,7 @@ dependencies {
     implementation project(':dashboard:data')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    
+    // Koin dependency injection
+    implementation rootProject.koinAndrid
 }

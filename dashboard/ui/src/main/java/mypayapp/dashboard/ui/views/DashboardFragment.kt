@@ -2,11 +2,15 @@ package mypayapp.dashboard.ui.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import mypayapp.dashboard.ui.databinding.FragmentDashboardBinding
+import mypayapp.dashboard.ui.viewmodel.DashboardViewModel
 import mypayapp.ui.base.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class DashboardFragment: BaseFragment() {
+class DashboardFragment : BaseFragment() {
+
+    private val viewModelDashboard by lazy { requireActivity().getViewModel<DashboardViewModel>() }
 
     companion object {
         fun getInstance() = DashboardFragment()
@@ -16,7 +20,8 @@ class DashboardFragment: BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+    ) = FragmentDashboardBinding.inflate(inflater, container, false).apply {
+        viewModel = viewModelDashboard
+        viewState = viewModelDashboard.viewState
+    }.root
 }

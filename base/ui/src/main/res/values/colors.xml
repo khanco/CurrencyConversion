@@ -4,4 +4,5 @@
     <color name="app_color">#FF3456</color>
     <color name="bg_amount">#d9d9d9</color>
     <color name="text_color">#424242</color>
+    <color name="exchange_rate_bg">#ebebeb</color>
 </resources>

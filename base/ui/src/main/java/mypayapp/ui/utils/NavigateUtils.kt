@@ -5,18 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 
 // Navigation Constants
-const val DASHBOARD_SCREEN = ".module.dashboard"
+const val SCREEN_DASHBOARD = ".module.dashboard"
 
 object NavigateUtils {
 
     fun navigateTo(context: Context, action: String, bundle: Bundle? = null) =
         internalIntent(context, action, bundle)
 
-    private fun internalIntent(context: Context, action: String, bundle: Bundle? = null): Intent {
-        val intent = Intent(context.packageName.plus(action)).setPackage(context.packageName)
-        if (bundle != null) {
-            intent.putExtras(bundle)
+    private fun internalIntent(context: Context, action: String, bundle: Bundle? = null) =
+        Intent(context.packageName.plus(action)).setPackage(context.packageName).apply {
+            if (bundle != null) {
+                this.putExtras(bundle)
+            }
         }
-        return intent
-    }
 }

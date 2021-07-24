@@ -11,16 +11,17 @@ open class BaseActivity : AppCompatActivity() {
         tag: String,
         addToBackStack: Boolean = true
     ) {
-        val fragmentTransaction = supportFragmentManager
+        supportFragmentManager
             .beginTransaction()
-            .replace(frameId, fragment)
-        if (addToBackStack) {
-            fragmentTransaction.addToBackStack(tag)
-        }
-        fragmentTransaction.commit()
+            .replace(frameId, fragment).apply {
+                if (addToBackStack) {
+                    this.addToBackStack(tag)
+                }
+                commit()
+            }
     }
 
-    fun open(screenName: String, finishCurrentScreen: Boolean = false) {
+    fun openScreen(screenName: String, finishCurrentScreen: Boolean = false) {
         startActivity(NavigateUtils.navigateTo(applicationContext, screenName))
         if (finishCurrentScreen) {
             finish()
