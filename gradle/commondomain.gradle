@@ -1,0 +1,12 @@
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    // Koin dependency injection
+    implementation rootProject.koin
+    implementation rootProject.coroutine
+
+    testImplementation rootProject.junit
+    testImplementation rootProject.haarmanMockitoKotlin
+    testImplementation rootProject.mockitoInline
+    testImplementation rootProject.mockito
+}

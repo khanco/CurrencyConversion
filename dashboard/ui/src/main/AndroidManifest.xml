@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mypayapp.dashboard.ui">
+    <application>
+        <activity android:name="mypayapp.dashboard.ui.views.DashboardActivity">
+            <intent-filter>
+                <action android:name="mypayapp.currencyconversion.module.dashboard" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

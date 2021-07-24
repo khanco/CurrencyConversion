@@ -1,0 +1,5 @@
+rootProject.name = "CurrencyConversion"
+include ':app'
+include ':base:ui', ':base:domain', ':base:data'
+include ':splash:ui'
+include ':dashboard:ui', ':dashboard:data', ':dashboard:domain'

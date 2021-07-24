@@ -1,0 +1,89 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.5.10"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+
+    ext {
+
+        sourceCompatibilityVersion = JavaVersion.VERSION_1_8
+        targetCompatibilityVersion = JavaVersion.VERSION_1_8
+
+        // SDK and tools
+        compileSdkVersion = 29
+        minSdkVersion = 21
+        targetSdkVersion = 29
+
+        // App version code and version name
+        versionCode = 1
+        versionName = "1.0.0"
+
+        // Kotlin and KTX libraries
+        coreKtx = "androidx.core:core-ktx:1.3.2"
+        kotlinStdJdk = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+        // co-routine dependency
+        coroutines = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+
+        // Koin dependency injection
+        koin = 'org.koin:koin-android:2.0.1'
+        koinAndrid = "org.koin:koin-android:2.0.1"
+        koinAndridViewModel = 'org.koin:koin-androidx-viewmodel:2.0.1'
+        koinAndroidScopr = 'org.koin:koin-androidx-scope:2.0.1'
+        koinAndroidArch = 'org.koin:koin-android-architecture:0.9.1'
+
+        // network dependencies
+        retrofit = 'com.squareup.retrofit2:retrofit:2.7.1'
+        gson = 'com.google.code.gson:gson:2.8.6'
+        interceptor = 'com.squareup.okhttp3:logging-interceptor:4.8.0'
+        coroutine = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+        scalarConverter = 'com.squareup.retrofit2:converter-scalars:2.1.0'
+
+        // UI
+        constraint  = 'androidx.constraintlayout:constraintlayout:2.0.4'
+        appCompat = 'androidx.appcompat:appcompat:1.2.0'
+        dimensionSsp = 'com.intuit.ssp:ssp-android:1.0.6'
+        dimensionSdp = 'com.intuit.sdp:sdp-android:1.0.6'
+
+        // For ViewModel
+        lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:2.0.0"
+        lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
+
+        // testing version
+        coroutinesTest = 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9'
+        junit = 'junit:junit:4.13.2'
+        androidXExtJunit = 'androidx.test.ext:junit:1.1.1'
+        androidCoreTesting = "androidx.arch.core:core-testing:2.1.0"
+        androidXCoreTesting = 'androidx.test:core:1.2.0'
+        robolectric = "org.robolectric:robolectric:4.5.1"
+        espressoCore = "androidx.test.espresso:espresso-core:3.1.0"
+        androidTestDataBinding = "androidx.databinding:databinding-compiler:4.1.3"
+        haarmanMockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+        mockitoInline = 'org.mockito:mockito-inline:2.13.0'
+        mockitoAndroid = "org.mockito:mockito-android:3.2.4"
+        mockito = "org.mockito:mockito-core:3.2.4"
+        hamcrest = "org.hamcrest:hamcrest:2.2"
+        fragmentTest = "androidx.fragment:fragment-testing:1.3.4"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
