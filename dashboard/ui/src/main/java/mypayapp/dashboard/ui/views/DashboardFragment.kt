@@ -69,7 +69,7 @@ class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
                         val convertFactor =
                             viewModelDashboard.getConvertedRate(
                                 item.exchangeRate,
-                                selectedCurrencyPosition
+                                it[selectedCurrencyPosition]
                             )
                         val convertedRates = ConvertedRates(
                             currencyCode = item.currencyCode,

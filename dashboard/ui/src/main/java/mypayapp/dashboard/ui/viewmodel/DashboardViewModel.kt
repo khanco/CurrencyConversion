@@ -106,10 +106,7 @@ class DashboardViewModel(
         }
     }
 
-    fun getConvertedRate(exchangeRate: Double, position: Int): Double {
-        listOfQuotes.value?.let {
-            return exchangeRate / it[position].exchangeRate
-        }
-        return 0.0
+    fun getConvertedRate(exchangeRate: Double, quoteEntity: QuoteEntity): Double {
+        return exchangeRate / quoteEntity.exchangeRate
     }
 }
