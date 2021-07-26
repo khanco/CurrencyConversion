@@ -1,7 +1,7 @@
 package mypayapp.data.datasource
 
 import mypayapp.data.network.DataParser
-import mypayapp.data.network.SERVER_ERROR_SOMETHING_WENT_WRONG
+import mypayapp.data.utils.SOMETHING_WENT_WRONG
 import mypayapp.domain.models.ApiResponseWrapper
 import java.io.Serializable
 
@@ -24,10 +24,10 @@ class DataSourceImpl(
     override fun getErrorMessage(errorBody: String?): String {
         return try {
             errorBody?.let { DataParser.fromJson<ApiResponseWrapper>(it).error?.info }
-                ?: SERVER_ERROR_SOMETHING_WENT_WRONG
+                ?: SOMETHING_WENT_WRONG
         } catch (e: Exception) {
             e.printStackTrace()
-            SERVER_ERROR_SOMETHING_WENT_WRONG
+            SOMETHING_WENT_WRONG
         }
     }
 }

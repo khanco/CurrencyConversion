@@ -11,6 +11,8 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     packagingOptions {
@@ -59,6 +61,7 @@ dependencies {
     implementation rootProject.room
     implementation rootProject.lifecycleExtensions
 
-    testImplementation rootProject.androidCoreTesting
-    testImplementation rootProject.hamcrest
+    androidTestImplementation rootProject.junit
+    androidTestImplementation rootProject.androidXExtJunit
+    androidTestImplementation rootProject.espressoCore
 }

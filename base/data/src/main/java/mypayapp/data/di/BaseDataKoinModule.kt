@@ -5,6 +5,8 @@ import androidx.room.Room
 import mypayapp.data.database.AppDatabase
 import mypayapp.data.datasource.*
 import mypayapp.data.network.*
+import mypayapp.data.utils.DATABASE_NAME
+import mypayapp.data.utils.PREF_NAME
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.bind
 import org.koin.dsl.module

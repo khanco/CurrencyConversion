@@ -1,8 +1,11 @@
 package mypayapp.ui.base
 
+import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 open class BaseViewModel : ViewModel() {
-    val showProgressBar = MutableLiveData<Boolean>()
+    val showProgressBar = ObservableBoolean()
+    val errorMessage = MediatorLiveData<String>()
 }

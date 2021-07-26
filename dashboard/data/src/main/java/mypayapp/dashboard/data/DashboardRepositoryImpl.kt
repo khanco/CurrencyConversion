@@ -33,7 +33,7 @@ class DashboardRepositoryImpl(
         }
     }
 
-    override suspend fun saveAllExchangeRates(listOfQuotes: ArrayList<QuoteEntity>) {
+    override suspend fun saveAllExchangeRates(listOfQuotes: List<QuoteEntity>) {
 
         val quoteDao = database.exchangeRateDao()
 

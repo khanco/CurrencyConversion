@@ -48,7 +48,4 @@ dependencies {
 
     implementation project(':dashboard:domain')
     implementation project(':dashboard:data')
-
-    // android testing
-    testImplementation rootProject.junit
 }

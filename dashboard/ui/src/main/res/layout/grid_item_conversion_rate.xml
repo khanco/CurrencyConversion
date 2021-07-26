@@ -11,21 +11,23 @@
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="@dimen/_8sdp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_rect_white_border_gray"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="6dp">
 
         <TextView
             android:id="@+id/tvAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="@{convertedRate.amount}"
             android:textColor="@color/text_color"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             tools:text="100.00" />
 
@@ -33,10 +35,10 @@
             android:id="@+id/tvCurrencyCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginTop="2dp"
             android:text="@{convertedRate.currencyCode}"
             android:textColor="@color/app_color"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             tools:text="USD" />
 

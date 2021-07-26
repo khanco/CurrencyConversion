@@ -8,6 +8,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mypayapp.dashboard.data.TIME_STAMP_WHEN_RATES_WAS_FETCHED
 import mypayapp.dashboard.domain.DashboardUseCase
+import mypayapp.data.utils.EXCHANGE_RATE_REFRESH_INTERVAL
+import mypayapp.data.utils.NO_INTERNET_ERROR
+import mypayapp.data.utils.SOMETHING_WENT_WRONG
 import mypayapp.domain.models.BaseResponse
 import mypayapp.domain.models.QuoteEntity
 import mypayapp.ui.base.BaseViewModel
@@ -19,12 +22,12 @@ class DashboardViewModel(
 ) : BaseViewModel() {
 
     val amount = MediatorLiveData<String>().apply {
-        value = "100"
+        value = "1"
     }
     val listOfQuotes = MutableLiveData<ArrayList<QuoteEntity>>()
 
     fun getDataForExchangeRates() {
-
+        showProgressBar.set(true)
         if (checkIfTimeStampExpired(useCase.getLastSavedTimeStamp())) {
             hitApi()
         } else {
@@ -33,7 +36,7 @@ class DashboardViewModel(
     }
 
     private fun checkIfTimeStampExpired(lastSavedTimeStamp: Long) =
-        lastSavedTimeStamp == 0L || System.currentTimeMillis() - lastSavedTimeStamp >= 30 * 60 * 1000
+        lastSavedTimeStamp == 0L || System.currentTimeMillis() - lastSavedTimeStamp >= EXCHANGE_RATE_REFRESH_INTERVAL
 
     private fun getDataFromLocal() {
         var listData: List<QuoteEntity>
@@ -42,6 +45,7 @@ class DashboardViewModel(
                 listData = useCase.getSavedExchangeRates()
             }
             listOfQuotes.value = ArrayList(listData)
+//            showProgressBar.value = false
         }
     }
 
@@ -51,13 +55,13 @@ class DashboardViewModel(
                 useCase.fetchExchangeRates()
             }) {
                 is BaseResponse.NetworkError -> {
-
+                    errorMessage.value = NO_INTERNET_ERROR
                 }
                 is BaseResponse.Error -> {
-
+                    errorMessage.value = response.exception.message
                 }
                 is BaseResponse.ApiError -> {
-
+                    errorMessage.value = response.message
                 }
                 is BaseResponse.Success -> {
                     processData(response.data)
@@ -67,9 +71,10 @@ class DashboardViewModel(
                     )
                 }
                 else -> {
-
+                    errorMessage.value = SOMETHING_WENT_WRONG
                 }
             }
+            showProgressBar.set(false)
         }
     }
 

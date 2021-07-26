@@ -13,7 +13,7 @@ interface ExchangeRateDao {
     fun getAllQuoteEntity(): List<QuoteEntity>
 
     @Query("SELECT * FROM QuoteEntity WHERE currencyCode = :currencyCode")
-    fun loadAllByIds(currencyCode: String): QuoteEntity
+    fun getQuoteById(currencyCode: String): QuoteEntity
 
     @Insert
     fun insertAll(quoteEntity: List<QuoteEntity>)

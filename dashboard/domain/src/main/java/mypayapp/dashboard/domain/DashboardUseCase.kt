@@ -5,7 +5,7 @@ import mypayapp.domain.models.QuoteEntity
 
 interface DashboardUseCase {
     suspend fun fetchExchangeRates(): BaseResponse<String>
-    suspend fun saveAllExchangeRates(listOfQuotes: ArrayList<QuoteEntity>)
+    suspend fun saveAllExchangeRates(listOfQuotes: List<QuoteEntity>)
     suspend fun getSavedExchangeRates(): List<QuoteEntity>
     fun getLastSavedTimeStamp(): Long
     fun saveCurrentTimeStamp(currentTimeMillis: Long)
@@ -13,7 +13,7 @@ interface DashboardUseCase {
 
 class DashboardUseCaseImpl(private val repository: DashboardRepository) : DashboardUseCase {
     override suspend fun fetchExchangeRates() = repository.fetchDataForExchangeRates()
-    override suspend fun saveAllExchangeRates(listOfQuotes: ArrayList<QuoteEntity>) =
+    override suspend fun saveAllExchangeRates(listOfQuotes: List<QuoteEntity>) =
         repository.saveAllExchangeRates(listOfQuotes)
 
     override suspend fun getSavedExchangeRates() = repository.getSavedExchangeRate()

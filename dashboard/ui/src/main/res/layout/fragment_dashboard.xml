@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="mypayapp.dashboard.ui.viewmodel.DashboardViewModel" />
@@ -13,20 +15,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/exchange_rate_bg">
 
         <EditText
             android:id="@+id/edtNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@color/text_color"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bg_rect_red_border"
             android:gravity="end"
             android:hint="@string/hint_amount"
             android:inputType="numberDecimal"
             android:padding="12dp"
             android:text="@={viewModel.amount}"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color"
             android:textColorHint="@android:color/darker_gray"
             android:textSize="38sp"
             android:textStyle="bold"
@@ -39,7 +43,7 @@
             android:id="@+id/spnSelectCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
@@ -52,12 +56,22 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="12dp"
-            android:background="@color/exchange_rate_bg"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spnSelectCurrency"
             tools:listitem="@layout/grid_item_conversion_rate" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/app_color"
+            android:visibility="@{viewModel.showProgressBar ? View.VISIBLE : View.GONE, default = gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

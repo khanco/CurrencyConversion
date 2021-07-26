@@ -14,7 +14,6 @@ import mypayapp.ui.adapter.setItems
 import mypayapp.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-
 class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
 
     private val viewModelDashboard by lazy { requireActivity().getViewModel<DashboardViewModel>() }
@@ -52,6 +51,10 @@ class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
         viewModelDashboard.amount.observe(viewLifecycleOwner, {
             setExchangeRate()
         })
+
+        viewModelDashboard.errorMessage.observe(viewLifecycleOwner, {
+            showToast(it)
+        })
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -60,6 +63,7 @@ class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
     }
 
     private fun setExchangeRate() {
+
         val listConvertedRates = ArrayList<ConvertedRates>()
         viewModelDashboard.amount.value?.let { amount ->
             if (amount.isNotBlank()) {
@@ -80,7 +84,7 @@ class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
                     }
                 }
                 if (rvExchangeRates.adapter == null) {
-                    rvExchangeRates.layoutManager = GridLayoutManager(activity, 3)
+                    rvExchangeRates.layoutManager = GridLayoutManager(activity, 4)
                     rvExchangeRates.adapter = ExchangeRateAdapter()
                 }
                 rvExchangeRates.setItems(listConvertedRates)
@@ -89,6 +93,6 @@ class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-
+        // Nothing to implement here
     }
 }
