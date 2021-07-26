@@ -7,6 +7,9 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import kotlin.reflect.KSuspendFunction1
 
+/**
+ * This class is responsible for making API request
+ */
 class RemoteDataSourceImpl(private val service: RetrofitService) : RemoteDataSource {
 
     private val headerMap = HashMap<String, Any>()

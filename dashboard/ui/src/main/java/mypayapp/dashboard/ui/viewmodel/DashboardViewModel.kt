@@ -1,13 +1,11 @@
 package mypayapp.dashboard.ui.viewmodel
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import mypayapp.dashboard.data.TIME_STAMP_WHEN_RATES_WAS_FETCHED
 import mypayapp.dashboard.domain.DashboardUseCase
 import mypayapp.data.utils.EXCHANGE_RATE_REFRESH_INTERVAL
 import mypayapp.data.utils.NO_INTERNET_ERROR
@@ -27,6 +25,9 @@ class DashboardViewModel(
     }
     val listOfQuotes = MutableLiveData<ArrayList<QuoteEntity>>()
 
+    /**
+     * Checks the data source API/DATABASE based on the time expiration of 30 minutes
+     */
     fun getDataForExchangeRates() {
         showProgressBar.set(true)
         if (checkIfTimeStampExpired(useCase.getLastSavedTimeStamp())) {
@@ -36,6 +37,12 @@ class DashboardViewModel(
         }
     }
 
+    /***
+     * Based on timestamp we can calculate 30 minutes and when user will land on page we will check
+     * timestamp and hit the api if is greater than given threshold of 30 minutes
+     * Work Manger can be used to refresh the exchange rates in background but this is not required
+     * here. When user will come we will find out to hit the API or not
+     */
     private fun checkIfTimeStampExpired(lastSavedTimeStamp: Long) =
         lastSavedTimeStamp == 0L || System.currentTimeMillis() - lastSavedTimeStamp >= EXCHANGE_RATE_REFRESH_INTERVAL
 
@@ -79,7 +86,9 @@ class DashboardViewModel(
         }
     }
 
-    @VisibleForTesting
+    /**
+     * parse the API response to save and make it available to UI
+     */
     private fun processData(response: String) {
         val jsonData = JSONObject(response)
         try {
@@ -113,6 +122,9 @@ class DashboardViewModel(
         }
     }
 
+    /**
+     * Convert the rates for other currency codes
+     */
     fun getConvertedRate(exchangeRate: Double, quoteEntity: QuoteEntity): Double {
         return exchangeRate / quoteEntity.exchangeRate
     }

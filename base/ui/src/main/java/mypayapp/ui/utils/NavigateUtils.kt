@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 
-// Navigation Constants
+// Screen names with their action intent identifier. This will avoid any dependency of other modules
+// activity name
 const val SCREEN_DASHBOARD = ".module.dashboard"
 
 object NavigateUtils {

@@ -3,6 +3,9 @@ package mypayapp.data.datasource
 import android.content.SharedPreferences
 import java.io.Serializable
 
+/***
+ * This class is responsible for saving/retrieving data from shared preference
+ */
 class SharedPrefDataSourceImpl(private val sharedPreference: SharedPreferences) :
     SharedPrefDataSource {
     override fun <T : Any> putData(key: String, data: T) {
@@ -12,7 +15,7 @@ class SharedPrefDataSourceImpl(private val sharedPreference: SharedPreferences) 
             is Boolean -> sharedPreference.edit().putBoolean(key, data).apply()
             is Long -> sharedPreference.edit().putLong(key, data).apply()
             is Float -> sharedPreference.edit().putFloat(key, data).apply()
-            else -> throw IllegalArgumentException("We only support Int, String, Boolean for Shared preference")
+            else -> throw IllegalArgumentException("Type mismatch")
         }
     }
 

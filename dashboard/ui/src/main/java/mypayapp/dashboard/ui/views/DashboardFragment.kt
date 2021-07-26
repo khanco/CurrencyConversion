@@ -62,8 +62,10 @@ class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
         setExchangeRate()
     }
 
+    /***
+     * This method is responsible for calculating exchange rates for all currencies
+     */
     private fun setExchangeRate() {
-
         val listConvertedRates = ArrayList<ConvertedRates>()
         viewModelDashboard.amount.value?.let { amount ->
             if (amount.isNotBlank()) {
@@ -83,13 +85,21 @@ class DashboardFragment : BaseFragment(), AdapterView.OnItemSelectedListener {
                         listConvertedRates.add(convertedRates)
                     }
                 }
-                if (rvExchangeRates.adapter == null) {
-                    rvExchangeRates.layoutManager = GridLayoutManager(activity, 4)
-                    rvExchangeRates.adapter = ExchangeRateAdapter()
-                }
-                rvExchangeRates.setItems(listConvertedRates)
+                setRecyclerAdapter(listConvertedRates)
+            } else {
+                /** set empty value if nothing entered in number input
+                 */
+                setRecyclerAdapter(ArrayList())
             }
         }
+    }
+
+    private fun setRecyclerAdapter(listConvertedRates: ArrayList<ConvertedRates>) {
+        if (rvExchangeRates.adapter == null) {
+            rvExchangeRates.layoutManager = GridLayoutManager(activity, 4)
+            rvExchangeRates.adapter = ExchangeRateAdapter()
+        }
+        rvExchangeRates.setItems(listConvertedRates)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

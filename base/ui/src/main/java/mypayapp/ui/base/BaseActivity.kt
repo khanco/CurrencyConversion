@@ -21,6 +21,9 @@ open class BaseActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * this function can navigate to other screen amongst various modules with intent action data.
+     */
     fun openScreen(screenName: String, finishCurrentScreen: Boolean = false) {
         startActivity(NavigateUtils.navigateTo(applicationContext, screenName))
         if (finishCurrentScreen) {
