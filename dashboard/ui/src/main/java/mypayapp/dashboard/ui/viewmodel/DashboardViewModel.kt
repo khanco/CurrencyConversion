@@ -1,5 +1,6 @@
 package mypayapp.dashboard.ui.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -78,6 +79,7 @@ class DashboardViewModel(
         }
     }
 
+    @VisibleForTesting
     private fun processData(response: String) {
         val jsonData = JSONObject(response)
         try {

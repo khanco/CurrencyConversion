@@ -60,6 +60,10 @@ dependencies {
     implementation rootProject.dimensionSsp
     implementation rootProject.dimensionSdp
 
-    // android testing
-    testImplementation rootProject.androidCoreTesting
+    // Testing
+    implementation rootProject.haarmanMockitoKotlin
+    implementation rootProject.mockitoInline
+    implementation rootProject.mockito
+    implementation rootProject.androidCoreTesting
+    implementation rootProject.coroutinesTest
 }
