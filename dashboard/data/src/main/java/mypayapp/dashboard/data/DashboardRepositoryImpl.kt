@@ -37,7 +37,7 @@ class DashboardRepositoryImpl(
 
         val quoteDao = database.exchangeRateDao()
 
-        if (quoteDao.getAllQuoteEntity().isEmpty()) {
+        if (quoteDao.getCount() == 0) {
             quoteDao.insertAll(listOfQuotes)
         } else {
             listOfQuotes.forEach {

@@ -45,7 +45,7 @@ class DashboardViewModel(
                 listData = useCase.getSavedExchangeRates()
             }
             listOfQuotes.value = ArrayList(listData)
-//            showProgressBar.value = false
+            showProgressBar.set(false)
         }
     }
 

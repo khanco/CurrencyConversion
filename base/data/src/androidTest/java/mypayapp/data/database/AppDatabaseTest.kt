@@ -74,6 +74,14 @@ class AppDatabaseTest : TestCase() {
         }
     }
 
+    @Test
+    fun checkCount() {
+        val quoteEntity = QuoteEntity("INR", 55.55)
+        dao.insert(quoteEntity)
+
+        assertTrue(dao.getCount() == 1)
+    }
+
     @After
     fun closeDB() {
         database.close()

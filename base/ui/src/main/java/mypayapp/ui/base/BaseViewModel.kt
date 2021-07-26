@@ -2,7 +2,6 @@ package mypayapp.ui.base
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 open class BaseViewModel : ViewModel() {
