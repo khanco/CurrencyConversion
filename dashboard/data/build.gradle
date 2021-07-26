@@ -1,7 +1,7 @@
 apply from: rootProject.file('gradle/commondata.gradle')
 
 dependencies {
-
     implementation project(':base:data')
+    implementation project(':base:domain')
     implementation project(':dashboard:domain')
 }

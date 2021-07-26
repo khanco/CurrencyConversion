@@ -55,6 +55,10 @@ dependencies {
     implementation rootProject.coroutine
     implementation rootProject.koinAndroidArch
 
+    // room
+    implementation rootProject.room
+    implementation rootProject.lifecycleExtensions
+
     testImplementation rootProject.androidCoreTesting
     testImplementation rootProject.hamcrest
 }

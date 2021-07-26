@@ -3,4 +3,5 @@ apply from: rootProject.file('gradle/commondata.gradle')
 dependencies {
     implementation project(':base:domain')
     implementation rootProject.scalarConverter
+    kapt(rootProject.roomAnnotationProcessor)
 }

@@ -4,9 +4,9 @@
     <bytecodeTargetLevel target="1.7">
       <module name="CurrencyConversion.app" target="11" />
       <module name="CurrencyConversion.base.data" target="11" />
+      <module name="CurrencyConversion.base.domain" target="1.8" />
       <module name="CurrencyConversion.base.ui" target="11" />
       <module name="CurrencyConversion.dashboard.data" target="11" />
-      <module name="CurrencyConversion.dashboard.domain" target="1.8" />
       <module name="CurrencyConversion.dashboard.ui" target="11" />
       <module name="CurrencyConversion.splash.ui" target="11" />
     </bytecodeTargetLevel>

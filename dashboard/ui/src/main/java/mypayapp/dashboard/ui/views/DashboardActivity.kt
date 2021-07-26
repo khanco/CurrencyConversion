@@ -12,7 +12,8 @@ class DashboardActivity : BaseActivity() {
         replaceFragment(
             R.id.frameContainer,
             DashboardFragment.getInstance(),
-            DashboardFragment::class.simpleName.toString()
+            DashboardFragment::class.simpleName.toString(),
+            addToBackStack = false
         )
     }
 }

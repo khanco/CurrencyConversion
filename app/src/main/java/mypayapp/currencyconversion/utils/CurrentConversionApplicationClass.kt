@@ -1,7 +1,10 @@
 package mypayapp.currencyconversion.utils
 
 import android.app.Application
-import mypayapp.dashboard.ui.di.dashboardKoinModule
+import mypayapp.dashboard.data.di.dashboardDataKoiModule
+import mypayapp.dashboard.domain.di.dashboardDomainKoinModule
+import mypayapp.dashboard.ui.di.dashboardUiKoinModule
+import mypayapp.data.di.baseDataKoinModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -14,7 +17,18 @@ class CurrentConversionApplicationClass : Application() {
     private fun loadKoinModules() {
         startKoin {
             androidContext(applicationContext)
-            modules(dashboardKoinModule)
+
+            modules(
+                baseDataKoinModule
+            )
+
+            modules(
+                listOf(
+                    dashboardUiKoinModule,
+                    dashboardDataKoiModule,
+                    dashboardDomainKoinModule
+                )
+            )
         }
     }
 }

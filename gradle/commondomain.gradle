@@ -5,6 +5,10 @@ dependencies {
     implementation rootProject.koin
     implementation rootProject.coroutine
 
+    // room
+    implementation rootProject.room
+    implementation rootProject.lifecycleExtensions
+
     testImplementation rootProject.junit
     testImplementation rootProject.haarmanMockitoKotlin
     testImplementation rootProject.mockitoInline

@@ -12,7 +12,7 @@ object RetrofitFactory {
 
     private var BASE_URL = "http://api.currencylayer.com/"
 
-    fun makeRetrofitService() = Retrofit.Builder()
+    fun makeRetrofitService(): RetrofitService = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(makeOkHttpClient())
         .addConverterFactory(ScalarsConverterFactory.create())

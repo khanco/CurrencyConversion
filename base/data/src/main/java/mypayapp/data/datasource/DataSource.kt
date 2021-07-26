@@ -1,5 +1,7 @@
 package mypayapp.data.datasource
 
-interface DataSource : RemoteDataSource, LocalDataSource {
-    // just used for proxy for Local and Remote data source
+const val REQUEST_TYPE_GET = "get"
+
+interface DataSource : RemoteDataSource, SharedPrefDataSource {
+    fun getErrorMessage(errorBody: String?): String
 }

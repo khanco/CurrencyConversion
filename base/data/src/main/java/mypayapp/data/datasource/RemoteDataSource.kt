@@ -6,7 +6,7 @@ interface RemoteDataSource {
     suspend fun fetchData(
         endPoint: String,
         body: String = "",
-        queryMap: Map<String, String> = HashMap(),
+        queryMap: HashMap<String, String> = HashMap(),
         requestType: String = "post"
     ): Response<String>
 }

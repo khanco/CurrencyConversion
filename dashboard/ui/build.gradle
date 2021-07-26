@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
 }
 
 apply from: rootProject.file('gradle/commonui.gradle')
@@ -42,6 +43,9 @@ android {
 
 dependencies {
     implementation project(':base:ui')
+    implementation project(':base:data')
+    implementation project(':base:domain')
+
     implementation project(':dashboard:domain')
     implementation project(':dashboard:data')
 }

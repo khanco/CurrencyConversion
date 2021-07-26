@@ -19,7 +19,7 @@ class SplashActivity : BaseActivity() {
     private fun goToDashboard() {
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                openScreen(SCREEN_DASHBOARD)
+                openScreen(SCREEN_DASHBOARD, finishCurrentScreen = true)
             }, SPLASH_TIMER
         )
     }

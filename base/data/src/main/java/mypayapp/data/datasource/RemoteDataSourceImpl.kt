@@ -10,18 +10,25 @@ import kotlin.reflect.KSuspendFunction1
 class RemoteDataSourceImpl(private val service: RetrofitService) : RemoteDataSource {
 
     private val headerMap = HashMap<String, Any>()
+    private val accessKey = "access_key"
+    private val accessKeyValue = "277ab6ae5041ae3d03865dbed4856c15"
 
     private fun setHeaderData() {
         // set header data here like device info user common info
     }
 
+    private fun setAccessKey(queryMap: HashMap<String, String>) {
+        queryMap[accessKey] = accessKeyValue
+    }
+
     override suspend fun fetchData(
         endPoint: String,
         body: String,
-        queryMap: Map<String, String>,
+        queryMap: HashMap<String, String>,
         requestType: String
     ): Response<String> {
         setHeaderData()
+        setAccessKey(queryMap)
         val requestSupport = RequestSupport(endPoint, body, queryMap, requestType)
         return executeRequest(requestSupport, ::getBodyStringWithQueryMap)
     }
@@ -34,11 +41,11 @@ class RemoteDataSourceImpl(private val service: RetrofitService) : RemoteDataSou
                 service.fetchData(requestSupport.endPoint, requestSupport.queryMap, headerMap)
             }
         } catch (e: Exception) {
-            val http999 = HttpCodes.Http999()
+            val httpError = HttpCodes.HttpCustomError()
             Response.error(
-                http999.code, ResponseBody.create(
+                httpError.code, ResponseBody.create(
                     "application/json".toMediaTypeOrNull(),
-                    "{\"msg\":\"${http999.message}\"}"
+                    "{\"msg\":\"${httpError.message}\"}"
                 )
             )
         }
